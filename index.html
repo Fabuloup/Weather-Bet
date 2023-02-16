@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Bet</title>
+    <!--<link rel="icon" href="./favicon.svg" type="image/svg+xml">-->
+    <link rel="icon" href="./favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Weather Bet<span class="sun" style="--s:10px;--o:5px;--c:rgb(255,211,90);--w:4px"></span></h1>
+    <div class="row">
+      <div id="user_datas" class="card" style="min-width: 34vw;">
+        <p id="wallet_display"><b>Wallet</b> : <span id="coins"></span> coins</p>
+        <div id="bet_history">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Weather</th>
+                <th>Bet</th>
+                <th>Status</th>
+              </tr>            
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <form id="bet_form" class="card" action="#">
+        <p>
+          I bet
+          <input type="number" name="bet_amount" id="bet_amount" style="width: 80px;" min="1" step="1" required>
+          that it will be
+          <select name="weather_option" id="weather_option" required>
+            <option value="0">sunny</option>
+            <option value="1">cloudy</option>
+            <option value="2">foggy</option>
+            <option value="3">rainy</option>
+            <option value="4">snowy</option>
+            <option value="5">stormy</option>
+          </select>
+          on
+          <input type="date" name="bet_date" id="bet_date" value="" required>
+          at
+          <input type="text" name="bet_location" id="bet_location" style="width: 200px;" placeholder="Example : Paris, France" required>
+        </p>
+        <p>
+          <input type="submit" value="Bet !">
+        </p>
+      </form>
+    </div>
+  <script src="./jquery.min.js"></script>
+	<script src="./main.js"></script>
+  </body>
+</html>
