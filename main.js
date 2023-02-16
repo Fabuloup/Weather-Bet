@@ -209,3 +209,9 @@ function weather_code_to_string(weather_code)
 		return "error";
 	}
 }
+
+function needAnotherChance()
+{
+	remove_user_datas();
+	location.reload();
+}
