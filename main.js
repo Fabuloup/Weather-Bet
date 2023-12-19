@@ -76,8 +76,9 @@ function check_bet()
 
 	for (var i = user_datas.bet_list.length - 1; i >= 0; i--) {
 		var current_bet = user_datas.bet_list[i];
+		var bet_date = new Date(current_bet.bet_date);
 
-		if(!current_bet.validated && new Date(current_bet.bet_date) <= yesterday)
+		if(!current_bet.validated && bet_date <= yesterday)
 		{
 			let weathercode;
 
@@ -86,17 +87,17 @@ function check_bet()
 				'data': {
 					'latitude': current_bet.location.latitude,
 					'longitude': current_bet.location.longitude,
-					'daily': 'weathercode',
+					'daily': 'weather_code',
 					'timezone': current_bet.timezone,
-					'start_date': current_bet.bet_date,
-					'end_date': (new Date()).toISOString().slice(0,10)
+					'past_days': Math.ceil((Date.now()-Date.parse(current_bet.bet_date))/ (1000 * 60 * 60 * 24)),
+					'forecast_days': 1
 				},
 				'type': 'get',
 				'dataType': 'json',
 				'async': false
 			})
 			.done(function (response) {
-				weathercode=response.daily.weathercode[0];
+				weathercode=response.daily.weather_code[0];
 			})
 			.fail(function(error){
 				console.log(error);
